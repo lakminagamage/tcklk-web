@@ -1,0 +1,578 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>TCK Software Solutions</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+<!-- Favicons -->
+<link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+<link href="{% static 'assets/img/favicon.png' %}" rel="apple-touch-icon">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+<link href="{% static 'assets/tcklk/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/icofont/icofont.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/venobox/venobox.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/aos/aos.css' %}" rel="stylesheet">
+
+<!-- Main CSS -->
+<link href="{% static 'assets/css/solutionscss.css' %}" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Play:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+	<div class="alert-success text-center row-cols-1 border-info">
+          {% if messages %}
+
+          <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+        </div>
+  <div class="hero-container"> <a href="{% url 'solutionsUrl' %}" class="hero-logo" data-aos="zoom-in"><img src="{% static 'assets/img/TCK_white.svg' %}" alt="" id="mainlogo"></a> <br>
+
+    <h1 data-aos="zoom-in" id="mainwelcome1">TCK Software Solutions</h1>
+    <h3 data-aos="fade-up" id="mainwelcome2">Technology Redefined</h3>
+
+    </div>
+
+<!-- End Hero --> 
+<div id="herowrap"></div>
+</section>
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+  <div class="container">
+
+    <!-- Mobile Only Logo and nav -->
+    <div class="logo d-block d-lg-none "> <a href="{% url 'solutionsUrl' %}" class="navlogocolor"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"> TCK Soft Solutions </a> </div>
+    <nav class="nav-menu d-none d-lg-block">
+      <ul class="nav-inner">
+        <li><a href="{% url 'homeUrl' %}">Home</a></li>
+        <li class="drop-down"><a>Services</a>
+          <ul>
+            <li><a href="{% url 'solutionsUrl' %}">TCK Solutions</a></li>
+            <li><a href="{% url 'creativesUrl' %}">TCK Creatives</a></li>
+            <li><a href="{% url 'estoreUrl' %}">TCK E-Store</a></li>
+            <li><a href="{% url 'eventsUrl' %}">TCK Events</a></li>
+          </ul>
+        </li>
+        <li><a href="#why-us">Why us</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li class="nav-logo"><a href="{% url 'solutionsUrl' %}"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a></li>
+        <li><a href="{% url 'legalUrl' %}">Legal</a></li>
+        <li><a href="{% url 'contactsUrl' %}">Contacts</a></li>
+        {% if user.is_authenticated %}
+        <li ><a href="{% url 'myaccountUrl' %}">My Account<span><img class="me-3 avatar" src="{{ request.user.profile.image.url }}" alt="" width="50px" height="50px"></span></a></li>
+        <li ><a href="{% url 'logoutUrl' %}">Sign Out</a></li>
+          {% else %}
+        <li ><a href="{% url 'loginUrl' %}">Login</a></li>
+        <li ><a href="{% url 'signupUrl' %}">Signup</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <!-- .nav-menu -->
+
+  </div>
+</header>
+<!-- ======= menu Section ======= -->
+
+<div id="mainMenu" class="mainMenuOverlay floating2">
+  <div class="itemMenuBox home"><a href="{% url 'homeUrl' %}" class="itemMenu ">Home</a></div>
+  <div class="itemMenuBox solutions"><a href="{% url 'solutionsUrl' %}" class="itemMenu ">Solutions</a></div>
+  <div class="itemMenuBox estore"><a href="{% url 'estoreUrl' %}" class="itemMenu ">E-Store</a></div>
+  <div class="itemMenuBox creatives"><a href="{% url 'creativesUrl' %}" class="itemMenu ">Creatives</a></div>
+  <div class="itemMenuBox events"><a href="{% url 'eventsUrl' %}" class="itemMenu ">Events</a></div>
+  <div class="itemMenuBox contact"><a href="{% url 'contactsUrl' %}" class="itemMenu ">Contact</a></div>
+  <a class="toggleMenu floating"><i class="bx bx-circle" aria-hidden="true"></i></a> </div>
+  <!-- End menu Section -->
+
+<!-- End Header -->
+
+<main id="main">
+
+     <section id="intro" class="intro flex-column container-fluid">
+        <h1>Join hands with us to the World Class intelligent Software Solutions</h1>
+        <h2>And transform your Business into the "Industry 4.0 Ready" with millions of Integrations and Services. </h2>
+    </section>
+
+  <section id="iwant"><div class="section-title iwant" data-aos="fade-up">
+    <div class="textiwant"><h3>I want a Software to
+      <h1><span class="typed" data-typed-items="Manage my Business.,  Connect with my Clients. , Control my Home Equipments. , Forecast my Business Future. , Makes my Business Mobile. ,  Connect with my Collegues. "></span></h1><h3><a data-aos="fade-up" href="#services" class="btn-get-started scrollto">Okay! Lets find out.</a></h3>
+    </h3>
+		
+		</div>
+	  
+  </div>
+	
+	</section>
+  
+
+  
+
+  
+	<!-- ======= Services Section ======= -->
+  <section id="services">
+    <div class="container">
+
+      <div class="section-title servicescontainer" data-aos="fade-up" data-aos-delay="200">
+        <h2>Our Services</h2>
+        <p class="para-font">Find Out Your Desired Solution From Our Range.</p>
+      </div>
+        <hr>
+      <br>
+      <br>
+      <div class="section-title" data-aos="zoom-in">
+        <h3>Business Solutions</h3>
+      </div>
+      <div class="bg-image"></div>
+      <div class="row business">
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon"><i class="fa icofont-cart-alt"></i></div>
+          <h4 class="service-title"><a href="">POS Solutions</a></h4>
+          <p class="service-description">Smartify your Business Today with our Smart POS solutions</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon"><i class="fa icofont-web"></i></div>
+          <h4 class="service-title"><a href="">Ecommerce Solutions</a></h4>
+          <p class="service-description">Make your Business Online for everyone.</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon"><i class="fa icofont-smart-phone"></i></div>
+          <h4 class="service-title"><a href="">Mobile Apps</a></h4>
+          <p class="service-description">Bring your Business down to the Customers' Palm</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-icon"><i class="fa icofont-ui-message"></i></div>
+          <h4 class="service-title"><a href="">SMS Solutions</a></h4>
+          <p class="service-description">Directly reach Your customers with our Mass SMS service.</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="500">
+          <div class="service-icon"><i class="fa icofont-light-bulb"></i></div>
+          <h4 class="service-title"><a href="">Smart Store Solutions</a></h4>
+          <p class="service-description">Make your Store special with us.</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="600">
+          <div class="service-icon"><i class="fa icofont-brain"></i></div>
+          <h4 class="service-title"><a href="">AI Solutions</a></h4>
+          <p class="service-description">Use the Power of Artificial Intelligence to boost Your Business Productivity.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="section-title servicescontainer" data-aos="zoom-in">
+        <h3>Educational Solutions</h3>
+      </div>
+      <div class="row educational">
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon"><i class="fa icofont-education"></i></div>
+          <h4 class="service-title"><a href="">LMS Solutions</a></h4>
+          <p class="service-description">Learning Management systems to your institute.</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon"><i class="fa icofont-web"></i></div>
+          <h4 class="service-title"><a href="">E-Learning Web Solutions</a></h4>
+          <p class="service-description">Your unique E-Learning platform starts here!</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon"><i class="fa icofont-library"></i></div>
+          <h4 class="service-title"><a href="">Library Management Systems</a></h4>
+          <p class="service-description">Electronic Novelty to your Library. </p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-icon"><i class="fa icofont-ui-message"></i></div>
+          <h4 class="service-title"><a href="">SMS Solutions</a></h4>
+          <p class="service-description">Connect with students and teachers made Easy.</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="500">
+          <div class="service-icon"><i class="fa icofont-file-document"></i></div>
+          <h4 class="service-title"><a href="">School Management Systems</a></h4>
+          <p class="service-description">Automate School tasks with us.</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="600">
+          <div class="service-icon"><i class="fa icofont-ui-office"></i></div>
+          <h4 class="service-title"><a href="">Attendance Systems</a></h4>
+          <p class="service-description">Student / Teacher Attendance systems from TCK.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="section-title servicescontainer" data-aos="zoom-in">
+        <h3>Intelligent Solutions</h3>
+      </div>
+      <div class="row smart">
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon"><i class="fa icofont-brain"></i></div>
+          <h4 class="service-title"><a href="">Smart Home Designs</a></h4>
+          <p class="service-description">Automate your house into a Home</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon"><i class="fa icofont-computer"></i></div>
+          <h4 class="service-title"><a href="">IOT Solutions</a></h4>
+          <p class="service-description">take control of your devices from wherever you are.</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon"><i class="fa icofont-robot"></i></div>
+          <h4 class="service-title"><a href="">Robotic Solutions</a></h4>
+          <p class="service-description">Robotic designs for your special needs.</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-icon"><i class="fa icofont-chart-radar-graph"></i></div>
+          <h4 class="service-title"><a href="">Big Data Solutions</a></h4>
+          <p class="service-description">Handle powerful data visualizations for greater Predictions</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="500">
+          <div class="service-icon"><i class="fa icofont-brainstorming"></i></div>
+          <h4 class="service-title"><a href="">Expert Solutions</a></h4>
+          <p class="service-description">extra specific Solutions for Elite class problems</p>
+        </div>
+        <div class="col-lg-4 col-md-6 service-item" data-aos="fade-up" data-aos-delay="600">
+          <div class="service-icon"><i class="fa icofont-brain-alt"></i></div>
+          <h4 class="service-title"><a href="">AI Solutions</a></h4>
+          <p class="service-description">Use the Power of Artificial Intelligence to boost Your Business Productivity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ======= Why Us Section ======= -->
+  <section id="why-us" class="why-us">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-7 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-stretch">
+          <div class="content" data-aos="fade-up">
+            <h3>There are thousands of software companies out there!<strong>&nbsp;But why us?</strong></h3>
+            <p></p>
+          </div>
+          <div class="accordion-list">
+            <ul>
+              <li data-aos="fade-up" data-aos-delay="100"> <a data-toggle="collapse" class="collapse" href="#accordion-list-1"><span>01</span> Exclusive Solutions<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                <div id="accordion-list-1" class="collapse show" data-parent=".accordion-list">
+                  <p>We provide you with novel Cutting-Edge Technology solutions to tackle your business needs.</p>
+                </div>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="200"> <a data-toggle="collapse" href="#accordion-list-2" class="collapsed"><span>02</span> Maximum Flexibility<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                <div id="accordion-list-2" class="collapse" data-parent=".accordion-list">
+                  <p> With TCK, you get 100% bespoke solutions just tailor-made for you. </p>
+                </div>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="300"> <a data-toggle="collapse" href="#accordion-list-3" class="collapsed"><span>03</span>Maximun  Extensibility <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                <div id="accordion-list-3" class="collapse" data-parent=".accordion-list">
+                  <p> We offer solutions in a range from Native apps to Cloud-Driven Software solutions. </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="whyuspic" class="col-lg-5 order-1 order-lg-2 align-items-stretch" data-aos="zoom-in"></div>
+      </div>
+    </div>
+  </section>
+  <!-- End Why Us Section -->
+  
+<!-- ======= Portfolio Section ======= -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Portfolio</h2>
+        <p class="para-font">Find out our Legacy in Action</p>
+      </div>
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-12 d-flex justify-content-center">
+
+          <ul id="portfolio-flters">
+            <li data-filter=".Solutions" class="filter-active">All</li>
+            <li data-filter=".Business">Business</li>
+            <li data-filter=".Educational">Educational</li>
+            <li data-filter=".Smart">Smart</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+        {% for item in obj %}
+        <div class="col-lg-4 col-md-6 portfolio-item {{ item.sort_by }} {{ item.keyword }}">
+          <div class="portfolio-wrap"> <img src="{{ item.image.url }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{ item.name }}</h4>
+              <p>{{ item.type}}</p>
+              <div class="portfolio-links"> <a href="{{ item.image.url}}" data-gall="portfolioGallery" class="venobox" title="{{ item.type}}"><i class="bx bx-plus"></i></a> <a href="" title="More Details"><i class="bx bx-link"></i></a> </div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- End Portfolio Section -->
+
+  <!-- ======= Clients Section ======= -->
+  <section id="clientlogos" class="clientlogos">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Our Clients</h2>
+      <p class="para-font">Experience Our Stronghold</p>
+    </div>
+    <div class="container" data-aos="zoom-in">
+      <div class="quote-icon">  </div>
+      <div class="owl-carousel testimonials-carousel">
+
+          {% for item1 in clientlogo %}
+            {% if item.sort_by == 'Business' %}
+        <div class="clientlogo-item">
+          <img src="{{item1.image.url}}" class="clientlogo-img" alt="{{ item1.business_name}}">
+          <h3>{{ item1.business_name}}</h3>
+        </div>
+            {% endif %}
+        {% endfor %}
+
+
+      </div>
+    </div>
+  </section>
+
+  <br>
+
+  <!-- ======= Testimonials Section ======= -->
+  <section id="testimonials" class="testimonials">
+	  <div class="section-title" data-aos="fade-up">
+        <h2>Testimonials</h2>
+        <p class="para-font">What our Clients Say about us</p>
+      </div>
+    <div class="container" data-aos="zoom-in">
+      <div class="quote-icon"> <i class="bx bxs-quote-right"></i> </div>
+      <div class="owl-carousel testimonials-carousel">
+
+          {% for item2 in testimonial %}
+              {% if item2.sort_by == 'Business' %}
+        <div class="testimonial-item">
+          <p> {{ item2.message }}  </p>
+          <img src="{{item2.image.url}}" class="testimonial-img" alt="{{ item2.name}}">
+          <h3>{{ item2.name}}</h3>
+          <h4>{{ item2.business_name}}</h4>
+        </div>
+              {% endif %}
+          {% endfor %}
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- End Testimonials Section -->
+
+  
+  <br>
+  
+  <!-- ======= Clients Section ======= -->
+  <section id="clients" class="clients">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>We have Experts in</h2>
+        <p class="para-font"></p>
+      </div>
+      <div class="row">
+        <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="100"> <img src="{% static 'assets/img/software/languages/vstd.png' %}" class="img-fluid" alt=""> </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="200"> <img src="{% static 'assets/img/software/languages/python.png' %}" class="img-fluid" alt=""> </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="300"> <img src="{% static 'assets/img/software/languages/xamarin.png' %}" class="img-fluid" alt=""> </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="400"> <img src="{% static 'assets/img/software/languages/django.png' %}" class="img-fluid" alt=""> </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="500"> <img src="{% static 'assets/img/software/languages/vuejs.png' %}" class="img-fluid" alt=""> </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="600"> <img src="{% static 'assets/img/software/languages/js.png' %}" class="img-fluid" alt=""> </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="700"> <img src="{% static 'assets/img/software/languages/rspi.png' %}" class="img-fluid" alt=""> </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="800"> <img src="{% static 'assets/img/software/languages/csrp.png' %}" class="img-fluid" alt=""> </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="900"> <img src="{% static 'assets/img/software/languages/astd.png' %}" class="img-fluid" alt=""> </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="1000"> <img src="{% static 'assets/img/software/languages/ard.png' %}" class="img-fluid" alt=""> </div>
+        <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="1100"> <img src="{% static 'assets/img/software/languages/bs.png' %}" class="img-fluid" alt=""> </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Clients Section --> 
+  
+  <!-- ======= Team Section =======
+  <section id="team" class="team">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Our Team</h2>
+        <p>Find out the great minds behind this reality.</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="zoom-in">
+            <div class="member-img"> <img src="{% static 'assets/img/team/team-1.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                  <a href="https://www.twitter.com/thinurakodithuwakku" target="_blank"><i class="icofont-twitter"></i></a>
+                  <a href="https://www.facebook.com/tck.admin" target="_blank"><i class="icofont-facebook"></i></a>
+                  <a href="https://www.instagram.com/thinura_kodi/" target="_blank"><i class="icofont-instagram"></i></a>
+                  <a href="" target="_blank"><i class="icofont-linkedin"></i></a> </div>
+            </div>
+            <div class="member-info">
+              <h4>Thinura Kodithuwakku</h4>
+              <span>System Architecturer</span>
+              <p class="teampara">With the years of working experience in IT sector , he's the Main Engine of our Great Journey.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="zoom-in" data-aos-delay="100">
+            <div class="member-img"> <img src="{% static 'assets/img/team/team-3.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                  <a href="https://www.twitter.com/pramodyalakmina" target="_blank"><i class="icofont-twitter"></i></a>
+                  <a href="https://www.facebook.com/pramodya.lakmina.754" target="_blank"><i class="icofont-facebook"></i></a>
+                  <a href="https://www.instagram.com/mr._lk_/" target="_blank"><i class="icofont-instagram"></i></a>
+                  <a href="" target="_blank"><i class="icofont-linkedin"></i></a> </div>
+            </div>
+            <div class="member-info">
+              <h4>Lakmina Gamage</h4>
+              <span>Web Applications Developer</span>
+              <p class="teampara">He's a one with a talent to offer your desired web content in a attractive and user-friendly way.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="zoom-in" data-aos-delay="200">
+            <div class="member-img"> <img src="{% static 'assets/img/team/team-3.jpg' %}" class="img-fluid" alt="">
+              <div class="social">
+                  <a href="https://www.twitter.com/bimsarasankha" target="_blank"><i class="icofont-twitter"></i></a>
+                  <a href="https://www.facebook.com/sankhabimsara.ambepitiya" target="_blank"><i class="icofont-facebook"></i></a>
+                  <a href="https://www.instagram.com/sankha_bimsara" target="_blank"><i class="icofont-instagram"></i></a>
+                  <a href="" target="_blank"><i class="icofont-linkedin"></i></a> </div>
+            </div>
+            <div class="member-info">
+              <h4>Sankha Ambepitiya</h4>
+              <span>System Applications Developer</span>
+              <p class="teampara"> His logical thinking and creative ideas are the backbone of our System Applications section.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ End Team Section -->
+  
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact section-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get Quotations</h2>
+        <p class="para-font">Contact For More</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="info d-flex flex-column justify-content-center" data-aos="fade-right">
+            <div class="address"> <i class="icofont-google-map"></i>
+              <h4> Our Location:</h4>
+              <p>TCK Creative Solutions<br>
+                Matara</p>
+            </div>
+            <div class="email"> <i class="icofont-envelope"></i>
+              <h4>Email</h4>
+              <p><a href="mailto:info@tck.lk"> info@tck.lk</a></p>
+            </div>
+            <div class="phone"> <i class="icofont-phone"></i>
+              <h4>Talk to Us</h4>
+              <a href="tel:+94 71 7661617"><p>+94 71 7661617</p></a>
+               <a href="tel:+94 75 7661617"><p>+94 75 7661617</p></a>
+				<a href="tel:+94 77 7661617"><p>+94 77 7661617</p></a>
+               <a href="tel:+94 71 7661617"><p>+94 78 7661617</p></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 mt-5 mt-lg-0">
+          <form method="POST" role="form" class="php-email-form" data-aos="fade-left">
+              {% csrf_token %}
+              {{ form | crispy }}
+            <div class="text-center">
+              <button type="submit">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section --> 
+  
+</main>
+<!-- End #main --> 
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6"> <a href="#header" class="scrollto footer-logo"><img src="{% static 'assets/img/tck.svg' %}" alt=""></a>
+          <h3>TCK Software Solutions</h3>
+          <p>Redefining intensions - Making lifestyles</p>
+        </div>
+      </div>
+      <div class="row footer-newsletter justify-content-center">
+        <div class="col-lg-6">
+
+        </div>
+      </div>
+      <div class="social-links"> <a href="https://www.twitter.com/" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a> <a href="https://www.facebook.com/tck.creator" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a> <a href="https://www.instagram.com/tck_creative_solutions/" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>  <a href="#" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a> </div>
+    </div>
+  </div>
+  <div class="container footer-bottom clearfix">
+    <div class="copyright"> &copy; Copyright 2021 <strong><span>TCK Software Solutions</span></strong>. <br>
+      All Rights Reserved. </div>
+    <div class="credits"> Proudly Designed and Maintained with Love by <a href="https://www.tck.lk" target="_blank">TCK Soft Solutions.</a> </div>
+  </div>
+  <div class="copyright"> <small>TCK Logo is a registered trademark of TCK Creative Solutions</small></div>
+</footer>
+<!-- End Footer --> 
+
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a> 
+<!-- tcklk JS Files --> 
+<script src="{% static 'assets/tcklk/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/jquery.easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/jquery-sticky/jquery.sticky.js' %}"></script>
+<script src="{% static 'assets/tcklk/venobox/venobox.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/owl.carousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/aos/aos.js' %}"></script>
+<script src="{% static 'assets/tcklk/typed.js/typed.min.js' %}"></script>
+
+<!-- Template Main JS File --> 
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'assets/js/menu.js' %}"></script>
+	
+
+
+<script src="{% static 'assets/js/three.r119.min.js' %}"></script>
+<script src="{% static 'assets/js/vanta.dots.min.js' %}"></script>
+<script>
+VANTA.DOTS({
+  el: "#hero",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x296670,
+  color2: 0xa40231,
+  backgroundColor: 0x60614
+})
+</script>
+</body>
+</html>

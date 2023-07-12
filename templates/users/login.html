@@ -1,0 +1,166 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sign In</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="{% static 'assets/img/favicon.ico' %}" rel="icon">
+<link href="{% static 'assets/img/favicon.ico' %}" rel="apple-touch-icon">
+
+<!-- tcklk CSS Files -->
+<link href="{% static 'assets/tcklk/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/icofont/icofont.min.css' %}" rel="stylesheet">
+<!-- Main CSS -->
+<link href="{% static 'assets/css/logincss.css' %}" rel="stylesheet">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Play:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+  <div class="container ">
+
+    <!-- Mobile Only Logo and nav -->
+    <div class="logo d-block d-lg-none "> <a href="{% url 'homeUrl' %}" class="navlogocolor"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"> TCK Group </a> </div>
+    <nav class="nav-menu d-none d-lg-block">
+      <ul class="nav-inner">
+        <li class="active"><a href="{% url 'homeUrl' %}">Home</a></li>
+        <li class="drop-down"><a>Services</a>
+          <ul>
+            <li><a href="{% url 'solutionsUrl' %}">TCK Solutions</a></li>
+            <li><a href="{% url 'creativesUrl' %}">TCK Creatives</a></li>
+            <li><a href="{% url 'estoreUrl' %}">TCK E-Store</a></li>
+            <li><a href="{% url 'eventsUrl' %}">TCK Events</a></li>
+          </ul>
+        </li>
+
+        <li><a href="{% url 'legalUrl' %}">Legal</a></li>
+        <li class="nav-logo"><a href="{% url 'homeUrl' %}"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a></li>
+
+        <li><a href="{% url 'contactsUrl' %}">Contacts</a></li>
+        {% if user.is_authenticated %}
+        <li ><a href="{% url 'myaccountUrl' %}">My Account<span><img class="me-3 avatar" src="{{ request.user.profile.image.url }}" alt="" width="50px" height="50px"></span></a></li>
+        <li ><a href="{% url 'logoutUrl' %}">Sign Out</a></li>
+          {% else %}
+        <li ><a href="{% url 'loginUrl' %}">Login</a></li>
+        <li ><a href="{% url 'signupUrl' %}">Signup</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <!-- .nav-menu -->
+
+  </div>
+</header>
+<!-- ======= menu Section ======= -->
+
+<div id="mainMenu" class="mainMenuOverlay floating2">
+  <div class="itemMenuBox home"><a href="{% url 'homeUrl' %}" class="itemMenu ">Home</a></div>
+  <div class="itemMenuBox solutions"><a href="{% url 'solutionsUrl' %}" class="itemMenu ">Solutions</a></div>
+  <div class="itemMenuBox estore"><a href="{% url 'estoreUrl' %}" class="itemMenu ">E-Store</a></div>
+  <div class="itemMenuBox creatives"><a href="{% url 'creativesUrl' %}" class="itemMenu ">Creatives</a></div>
+  <div class="itemMenuBox events"><a href="{% url 'eventsUrl' %}" class="itemMenu ">Events</a></div>
+  <div class="itemMenuBox contact"><a href="{% url 'contactsUrl' %}" class="itemMenu ">Contact</a></div>
+  <a class="toggleMenu floating"><i class="bx bx-circle" aria-hidden="true"></i></a> </div>
+  <!-- End menu Section -->
+
+<!-- End Header -->
+
+<main class="form-signin">
+<div class="alert-info">
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</div>
+    <form method="POST">
+        {% csrf_token %}
+        <center>
+        <img alt="" class="mb-4" height="57" src="{% static 'assets/img/tck.svg' %}" width="72">
+        <h1 class="h3 mb-3 fw-normal">Sign In</h1>
+        </center>
+        {{ form | crispy }}
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <p class="align-content-center text-center mt-3 mb-0">or</p>
+
+        <div class="align-content-md-center container my-auto py-3"><a  class="btn-get-started btn-light p-2 border-2" href="{% provider_login_url 'google' %}"><span><img class="me-3" src="{% static 'assets/img/google-logo.png' %}" alt="" width="50px" height="50px"></span> Login With Google </a></div>
+
+        <div class="align-content-md-center container my-auto py-3"><a  class="btn-get-started btn-light p-2 border-2" href="{% provider_login_url 'facebook' method='js_sdk' %}"><span><img class="me-3" src="{% static 'assets/img/logo-fb.png' %}" alt="" width="50px" height="50px"></span> Login With Facebook </a></div>
+
+        <br>
+        <a class="already" href="{% url 'signupUrl' %}"><i class="icofont-dotted-down"></i>Don't have an account? Signup Here.</a>
+        <a class="already" href="{% url 'password_reset' %}"> <i class="icofont-dotted-down"></i>Forgot Password? reset your Account Here.</a>
+    </form>
+
+
+</main>
+<!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6"> <a href="#header" class="scrollto footer-logo"><img src="{% static 'assets/img/tck.svg' %}" alt=""></a>
+          <h3>TCK</h3>
+          <p>Redefining intensions</p>
+        </div>
+      </div>
+      <div class="row footer-newsletter justify-content-center">
+        <div class="col-lg-6">
+
+        </div>
+      </div>
+      <div class="social-links"> <a href="https://www.twitter.com/" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a> <a href="https://www.facebook.com/tck.creator" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a> <a href="https://www.instagram.com/tck_creative_solutions/" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>  <a href="#" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a> </div>
+    </div>
+  </div>
+  <div class="container footer-bottom clearfix">
+    <div class="copyright"> &copy; Copyright 2021 <strong><span>TCK</span></strong>. <br>
+      All Rights Reserved. </div>
+    <div class="credits"> Proudly Designed and Maintained with Love by <a href="https://www.tck.lk" target="_blank">TCK Solutions.</a> </div>
+  </div>
+  <div class="copyright"> <small>TCK Logo is a registered trademark of TCK Creative Solutions</small></div>
+</footer>
+<!-- End Footer -->
+
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+<!-- tcklk JS Files -->
+<script src="{% static 'assets/tcklk/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/jquery.easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/jquery-sticky/jquery.sticky.js' %}"></script>
+
+
+
+<!-- Template Main JS File -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'assets/js/menu.js' %}"></script>
+
+
+</body>
+</html>

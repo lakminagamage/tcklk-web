@@ -1,0 +1,427 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>TCK Events</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+<link href="{% static 'assets/img/favicon.png' %}" rel="apple-touch-icon">
+
+<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/product/">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+<link href="{% static 'assets/tcklk/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/icofont/icofont.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/venobox/venobox.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+<link href="{% static 'assets/tcklk/aos/aos.css' %}" rel="stylesheet">
+
+<!-- Main CSS -->
+<link href="{% static 'assets/css/eventcss.css' %}" rel="stylesheet">
+
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Play:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jura:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<section id="hero">
+  <div class="alert-success text-center row-cols-1">
+          {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+  <div class="hero-container">
+  </div>
+	<div class="hero-container">
+	   <a href="{% url 'eventsUrl' %}" class="hero-logo" data-aos="zoom-in"><img src="{% static 'assets/img/TCK_white.svg' %}" alt="" id="mainlogo"></a>
+    <h1 data-aos="zoom-in" id="mainwelcome1">Welcome To TCK Events</h1>
+	<h2 data-aos="zoom-in">Bring Life to Your Event</h2>
+	</div>
+</section>
+
+
+	
+<!-- End Hero --> 
+
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+  <div class="container"> 
+    
+    <!-- Mobile Only Logo and nav -->
+    <div class="logo d-block d-lg-none "> <a href="{% url 'eventsUrl' %}" class="navlogocolor"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"> TCK Event Management</a> </div>
+    <nav class="nav-menu d-none d-lg-block">
+      <ul class="nav-inner">
+        <li class="active"><a href="{% url 'homeUrl' %}">Home</a></li>
+        <li class="drop-down"><a>Services</a>
+          <ul>
+            <li><a href="{% url 'solutionsUrl' %}">TCK Solutions</a></li>
+            <li><a href="{% url 'creativesUrl' %}">TCK Creatives</a></li>
+            <li><a href="{% url 'estoreUrl' %}">TCK E-Store</a></li>
+            <li><a href="{% url 'eventsUrl' %}">TCK Events</a></li>
+          </ul>
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li class="nav-logo"><a href="{% url 'eventsUrl' %}"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a></li>
+        <li><a href="#">Legal</a></li>
+        <li><a href="#">Contacts</a></li>
+        {% if user.is_authenticated %}
+        <li ><a href="{% url 'myaccountUrl' %}">My Account<span><img class="me-3 avatar" src="{{ request.user.profile.image.url }}" alt="" width="50px" height="50px"></span></a></li>
+        <li ><a href="{% url 'logoutUrl' %}">Sign Out</a></li>
+          {% else %}
+        <li ><a href="{% url 'loginUrl' %}">Login</a></li>
+        <li ><a href="{% url 'signupUrl' %}">Signup</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <!-- .nav-menu --> 
+    
+  </div>
+
+    <!-- ======= menu Section ======= -->
+
+<div id="mainMenu" class="mainMenuOverlay floating2">
+  <div class="itemMenuBox home"><a href="{% url 'homeUrl' %}" class="itemMenu ">Home</a></div>
+  <div class="itemMenuBox solutions"><a href="{% url 'solutionsUrl' %}" class="itemMenu ">Solutions</a></div>
+  <div class="itemMenuBox estore"><a href="{% url 'estoreUrl' %}" class="itemMenu ">E-Store</a></div>
+  <div class="itemMenuBox creatives"><a href="{% url 'creativesUrl' %}" class="itemMenu ">Creatives</a></div>
+  <div class="itemMenuBox events"><a href="{% url 'eventsUrl' %}" class="itemMenu ">Events</a></div>
+  <div class="itemMenuBox contact"><a href="{% url 'contactsUrl' %}" class="itemMenu ">Contact</a></div>
+  <a class="toggleMenu floating"><i class="bx bx-circle" aria-hidden="true"></i></a> </div>
+  <!-- End menu Section -->
+</header>
+<!-- End Header -->
+
+<main id="main">
+	
+	<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light maintext">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal" data-aos="fade-up">Manage Your Event in a Professional Way.</h1>
+		  <hr class="featurette-divider">
+      <h2 class="lead fw-normal" data-aos="zoom-in">We here at TCK Events, will Arrange Everything for you</h2>
+		<h2 data-aos="zoom-in">🤝</h2>
+    
+    </div>
+  </div>
+
+ 
+	
+	 <!-- START THE FEATURETTES -->
+	<div class="container featured">
+
+    <div class="row featurette" data-aos="fade-right">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Too busy to handle your Event? <span class="text-muted">Don't worry. We will take care of it. </span></h2>
+		
+        <p class="lead">We will make your Event a great success.</p>
+      </div>
+      <div class="col-md-5">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'assets/img/eventshero.jpg' %}">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" data-aos="fade-left">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Tired of calling Services one by one? <span class="text-muted"> Well, don't be more.</span></h2>
+        <p class="lead">We will arrange everything for you under a single roof.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'assets/img/photographer.jpg' %}">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette" data-aos="fade-right">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Want Professionals for your Event? <span class="text-muted">Yeah! You owned them.</span></h2>
+        <p class="lead">TCK is the best place to hire qualified professionals to your event.</p>
+      </div>
+      <div class="col-md-5">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'assets/img/djs.jpg' %}">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+  
+  <!-- ======= Portfolio Section ======= -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Portfolio</h2>
+        <p class="para-font">Find out our Legacy in Action</p>
+      </div>
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-12 d-flex justify-content-center">
+
+          <ul id="portfolio-flters">
+            <li data-filter=".Events" class="filter-active">All</li>
+            <!-- <li data-filter=".Business">Business</li>
+            <li data-filter=".Educational">Educational</li>
+            <li data-filter=".Smart">Smart</li> -->
+          </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+        {% for item in obj %}
+        <div class="col-lg-4 col-md-6 portfolio-item {{ item.sort_by }} {{ item.keyword }}">
+          <div class="portfolio-wrap"> <img src="{{ item.image.url }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{ item.name }}</h4>
+              <p>{{ item.type}}</p>
+              <div class="portfolio-links"> <a href="{{ item.image.url}}" data-gall="portfolioGallery" class="venobox" title="{{ item.type}}"><i class="bx bx-plus"></i></a> <a href="" title="More Details"><i class="bx bx-link"></i></a> </div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- End Portfolio Section -->
+
+  <!-- ======= Clients Section ======= -->
+  <section id="clientlogos" class="clientlogos">
+    <div class="section-title" data-aos="fade-up">
+      <h2>Our Clients</h2>
+      <p class="para-font">Experience Our Stronghold</p>
+    </div>
+    <div class="container" data-aos="zoom-in">
+      <div class="quote-icon">  </div>
+      <div class="owl-carousel testimonials-carousel">
+
+          {% for item1 in clientlogo %}
+            {% if item.sort_by == 'Events' %}
+        <div class="clientlogo-item">
+          <img src="{{item1.image.url}}" class="clientlogo-img" alt="{{ item1.business_name}}">
+          <h3>{{ item1.business_name}}</h3>
+        </div>
+            {% endif %}
+        {% endfor %}
+
+
+      </div>
+    </div>
+  </section>
+
+  <br>
+
+  <!-- ======= Testimonials Section ======= -->
+  <section id="testimonials" class="testimonials">
+	  <div class="section-title" data-aos="fade-up">
+        <h2>Testimonials</h2>
+        <p class="para-font">What our Clients Say about us</p>
+      </div>
+    <div class="container" data-aos="zoom-in">
+      <div class="quote-icon"> <i class="bx bxs-quote-right"></i> </div>
+      <div class="owl-carousel testimonials-carousel">
+
+          {% for item2 in testimonial %}
+              {% if item2.sort_by == 'Events' %}
+        <div class="testimonial-item">
+          <p> {{ item2.message }}  </p>
+          <img src="{{item2.image.url}}" class="testimonial-img" alt="{{ item2.name}}">
+          <h3>{{ item2.name}}</h3>
+          <h4>{{ item2.business_name}}</h4>
+        </div>
+              {% endif %}
+          {% endfor %}
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- End Testimonials Section -->
+  
+  <br>
+  
+  <!-- ======= Team Section =======
+  <section id="team" class="team">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Our Team</h2>
+        <p>Meet Our Backbone.</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="zoom-in">
+            <div class="member-img"> <img src="{% static 'assets/img/team/team-1.jpg' %}" class="img-fluid" alt="">
+              <div class="social"> <a href=""><i class="icofont-twitter"></i></a> <a href="" target="_blank"><i class="icofont-facebook"></i></a> <a href=""><i class="icofont-instagram"></i></a> <a href="" target="_blank"><i class="icofont-linkedin"></i></a> </div>
+            </div>
+            <div class="member-info">
+              <h4>Madusha Samarasekara</h4>
+              <span>Chief - TCK Events</span>
+              <p class="teampara">With his NVQ level qualifications, He's the backbone of our Events subsidiary.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="zoom-in" data-aos-delay="100">
+            <div class="member-img"> <img src="{% static 'assets/img/team/team-3.jpg' %}" class="img-fluid" alt="">
+              <div class="social"> <a href="" target="_blank"><i class="icofont-twitter"></i></a> <a href="" target="_blank"><i class="icofont-facebook"></i></a> <a href="https://www.instagram.com/lakshanadeera/" target="_blank"><i class="icofont-instagram"></i></a> <a href="" target="_blank"><i class="icofont-linkedin"></i></a> </div>
+            </div>
+            <div class="member-info">
+              <h4>Nadeera Sandaruwan</h4>
+              <span>Assistant Chief - TCK Events</span>
+              <p class="teampara">His commitment is the driving force of TCK Events.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="member" data-aos="zoom-in" data-aos-delay="200">
+            <div class="member-img"> <img src="{% static 'assets/img/team/team-3.jpg' %}" class="img-fluid" alt="">
+              <div class="social"> <a href="https://www.twitter.com/MaleeshaMahend1" target="_blank"><i class="icofont-twitter"></i></a> <a href="https://www.facebook.com/maleesha.mahendra.2001" target="_blank"><i class="icofont-facebook"></i></a> <a href="https://www.instagram.com/maleesha_mahendra/"><i class="icofont-instagram"></i></a> <a href="" target="_blank"><i class="icofont-linkedin"></i></a> </div>
+            </div>
+            <div class="member-info">
+              <h4>Maleesha Mahendra</h4>
+              <span>Assistant Chief - TCK Events</span>
+              <p class="teampara">His talent to capture your life movements in an apeture is remarkable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+   End Team Section -->
+  
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact section-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get Quotations</h2>
+        <p class="para-font">Contact For More</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="info d-flex flex-column justify-content-center" data-aos="fade-right">
+            <div class="address"> <i class="icofont-google-map"></i>
+              <h4> Our Location:</h4>
+              <p>TCK Creative Solutions<br>
+                Matara</p>
+            </div>
+            <div class="email"> <i class="icofont-envelope"></i>
+              <h4>Email</h4>
+              <p><a href="mailto:info@tck.lk"> info@tck.lk</a></p>
+            </div>
+            <div class="phone"> <i class="icofont-phone"></i>
+              <h4>Talk to Us</h4>
+              <a href="tel:+94 71 7661617"><p>+94 71 7661617</p></a>
+               <a href="tel:+94 75 7661617"><p>+94 75 7661617</p></a>
+				<a href="tel:+94 77 7661617"><p>+94 77 7661617</p></a>
+               <a href="tel:+94 71 7661617"><p>+94 78 7661617</p></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 mt-5 mt-lg-0">
+          <form method="POST" role="form" class="php-email-form" data-aos="fade-left">
+              {% csrf_token %}
+              {{ form | crispy }}
+            <div class="text-center">
+              <button type="submit">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section --> 
+  
+</main>
+<!-- End #main --> 
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6"> <a href="#header" class="scrollto footer-logo"><img src="{% static 'assets/img/tck.svg' %}" alt=""></a>
+          <h3>TCK Events</h3>
+          <p>Bring Life to Your Event</p>
+        </div>
+      </div>
+      <div class="row footer-newsletter justify-content-center">
+        <div class="col-lg-6">
+
+        </div>
+      </div>
+      <div class="social-links"> <a href="https://www.twitter.com/" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a> <a href="https://www.facebook.com/tck.creator" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a> <a href="https://www.instagram.com/tck_creative_solutions/" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>  <a href="#" class="linkedin" target="_blank"><i class="bx bxl-linkedin"></i></a> </div>
+  </div>
+  <div class="container footer-bottom clearfix">
+    <div class="copyright"> &copy; Copyright 2021 <strong><span>TCK Events</span></strong>. <br>
+      All Rights Reserved. </div>
+    <div class="credits"> Proudly Designed and Maintained with Love by <a href="https://www.tck.lk" target="_blank">TCK Solutions.</a> </div>
+  </div>
+  <div class="copyright"> <small>TCK Logo is a registered trademark of TCK Creative Solutions</small></div>
+</footer>
+<!-- End Footer --> 
+
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a> 
+
+<!-- tcklk JS Files --> 
+<script src="{% static 'assets/tcklk/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/jquery.easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/jquery-sticky/jquery.sticky.js' %}"></script>
+<script src="{% static 'assets/tcklk/venobox/venobox.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/owl.carousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/tcklk/aos/aos.js' %}"></script>
+
+<script src="{% static 'assets/js/three.r119.min.js' %}"></script>
+<script src="{% static 'assets/js/vanta.fog.min.js' %}"></script>
+<script>
+VANTA.FOG({
+  el: "#hero",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  highlightColor: 0xfabb40,
+  midtoneColor: 0xcd5349,
+  lowlightColor: 0x583fcf,
+  baseColor: 0xecf0f0,
+  blurFactor: 0.75,
+  speed: 1.60
+})
+</script>
+
+<!-- Template Main JS File --> 
+<script src="{% static 'assets/js/main.js' %}"></script>
+<script src="{% static 'assets/js/menu.js' %}"></script>
+
+
+</body>
+</html>
